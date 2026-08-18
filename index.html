@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WrenchIQ MVP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>WrenchIQ</h1>
+        <p>Diagnose smarter. Fix faster.</p>
+      </div>
+      <span class="badge">MVP v0.1</span>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Vehicle</h2>
+        <div class="grid two">
+          <label>Year<input id="year" inputmode="numeric" placeholder="2021" /></label>
+          <label>Make<input id="make" placeholder="Toyota" /></label>
+          <label>Model<input id="model" placeholder="Tacoma" /></label>
+          <label>Engine<input id="engine" placeholder="3.5L V6" /></label>
+        </div>
+        <label>VIN<input id="vin" placeholder="Enter or scan VIN later" maxlength="17" /></label>
+      </section>
+
+      <section class="card">
+        <h2>Concern</h2>
+        <label>Customer complaint<textarea id="complaint" rows="3" placeholder="Example: rough idle, check engine light on"></textarea></label>
+        <div class="grid two">
+          <label>DTC<input id="dtc" placeholder="P0171" /></label>
+          <label>Mileage<input id="mileage" inputmode="numeric" placeholder="98400" /></label>
+        </div>
+        <label>Scan data / notes<textarea id="scanData" rows="4" placeholder="Example: STFT +18%, LTFT +24%, rough idle improves above 1800 RPM"></textarea></label>
+        <button id="diagnoseBtn" class="primary">Build Diagnostic Path</button>
+      </section>
+
+      <section class="card hidden" id="diagnosticCard">
+        <div class="section-title-row">
+          <h2>Diagnostic Path</h2>
+          <span id="confidence" class="confidence">Confidence: --</span>
+        </div>
+        <div id="summary" class="summary"></div>
+        <div id="steps" class="steps"></div>
+      </section>
+
+      <section class="card hidden" id="fixCard">
+        <h2>Confirmed Repair</h2>
+        <p class="muted">Save what actually fixed the vehicle. This is the beginning of WrenchIQ's repair intelligence database.</p>
+        <label>Root cause<input id="rootCause" placeholder="Example: cracked intake boot" /></label>
+        <label>Repair performed<textarea id="repair" rows="3" placeholder="Example: replaced intake boot, cleared DTCs, road tested"></textarea></label>
+        <div class="grid two">
+          <button id="saveFixBtn" class="primary">Save Confirmed Fix</button>
+          <button id="resetBtn" class="secondary">New Vehicle</button>
+        </div>
+        <div id="saveMessage" class="save-message"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title-row">
+          <h2>Local Repair History</h2>
+          <button id="clearHistoryBtn" class="link-btn">Clear</button>
+        </div>
+        <div id="history" class="history muted">No saved repairs yet.</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
